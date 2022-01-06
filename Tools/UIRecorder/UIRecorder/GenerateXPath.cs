@@ -449,7 +449,7 @@ namespace WinAppDriverUIRecorder
                     }
                 }
 
-                if (!string.IsNullOrEmpty(Pos) && string.IsNullOrEmpty(AutomationId) && string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(ClassName))
+                if (!string.IsNullOrEmpty(Pos) && string.IsNullOrEmpty(AutomationId))
                 {
                      xPathNode += $"[position()={Pos}]";
                 }
