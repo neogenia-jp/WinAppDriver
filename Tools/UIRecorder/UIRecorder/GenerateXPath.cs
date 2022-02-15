@@ -384,28 +384,28 @@ namespace WinAppDriverUIRecorder
                 // Set AutomationId to null if it is a GUID which is very likely generated at runtime
                 AutomationId = CheckAndFixNoneStaticValue(AutomationId);
 
-                // AutomationId (like UIs on Cortana search result list) created at runtime may end with digits
-                if (!string.IsNullOrEmpty(AutomationId) && !AutomationId.StartsWith("starts-with:"))
-                {
-                    string patAutoIdEndsWithDigits = @"^([^\d]*)[_\.\-\d]+$";
-                    System.Text.RegularExpressions.Regex regAutoId = new System.Text.RegularExpressions.Regex(patAutoIdEndsWithDigits, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                    if (regAutoId != null)
-                    {
-                        System.Text.RegularExpressions.Match matchAutoId = regAutoId.Match(AutomationId);
-                        if (matchAutoId.Success && matchAutoId.Groups.Count > 1)
-                        {
-                            if (matchAutoId.Groups[1].Length > 0)
-                            {
-                                AutomationId = "starts-with:" + matchAutoId.Groups[1].ToString();
-                                bStartsWithAutoId = true;
-                            }
-                            else
-                            {
-                                AutomationId = null;
-                            }
-                        }
-                    }
-                }
+//                 // AutomationId (like UIs on Cortana search result list) created at runtime may end with digits
+//                 if (!string.IsNullOrEmpty(AutomationId) && !AutomationId.StartsWith("starts-with:"))
+//                 {
+//                     string patAutoIdEndsWithDigits = @"^([^\d]*)[_\.\-\d]+$";
+//                     System.Text.RegularExpressions.Regex regAutoId = new System.Text.RegularExpressions.Regex(patAutoIdEndsWithDigits, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+//                     if (regAutoId != null)
+//                     {
+//                         System.Text.RegularExpressions.Match matchAutoId = regAutoId.Match(AutomationId);
+//                         if (matchAutoId.Success && matchAutoId.Groups.Count > 1)
+//                         {
+//                             if (matchAutoId.Groups[1].Length > 0)
+//                             {
+//                                 AutomationId = "starts-with:" + matchAutoId.Groups[1].ToString();
+//                                 bStartsWithAutoId = true;
+//                             }
+//                             else
+//                             {
+//                                 AutomationId = null;
+//                             }
+//                         }
+//                     }
+//                 }
 
                 if (!string.IsNullOrEmpty(ClassName) && string.IsNullOrEmpty(AutomationId))
                 {
